@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__
+venv
+movies.sql
+requirements.txt
+readme.md

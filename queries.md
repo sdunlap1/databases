@@ -19,7 +19,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     \```sql
 
-    <strong>SELECT title FROM movies;</strong>
+    SELECT title FROM movies;
 
     \```
 
@@ -27,7 +27,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT * FROM movies WHERE rating = 'G';</strong>
+    SELECT * FROM movies WHERE rating = 'G';
 
     ```
 
@@ -36,7 +36,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
      ```sql
 
-    <strong>SELECT title, release_year FROM movies ORDER BY release_year ASC;</strong>
+    SELECT title, release_year FROM movies ORDER BY release_year ASC;
 
     ```
     
@@ -44,7 +44,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT * FROM movies ORDER BY runtime DESC LIMIT 5;</strong>
+    SELECT * FROM movies ORDER BY runtime DESC LIMIT 5;
 
     ```
 
@@ -53,7 +53,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT rating, COUNT(*) AS total FROM movies GROUP BY rating;</strong>
+    SELECT rating, COUNT(*) AS total FROM movies GROUP BY rating;
 
     ```
 
@@ -62,7 +62,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT release_year, AVG(runtime) AS average_runtime FROM movies GROUP BY release_year ORDER BY release_year DESC;</strong>
+    SELECT release_year, AVG(runtime) AS average_runtime FROM movies GROUP BY release_year ORDER BY release_year DESC;
 
     ```
 
@@ -71,7 +71,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT movies.title, studios.name FROM movies JOIN studios ON movies.studio_id = studios.id;</strong>
+    SELECT movies.title, studios.name FROM movies JOIN studios ON movies.studio_id = studios.id;
 
     ```
 
@@ -80,7 +80,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT stars.first_name, stars.last_name, movies.title FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id;</strong>
+    SELECT stars.first_name, stars.last_name, movies.title FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id;
 
     ```
 
@@ -88,7 +88,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT DISTINCT stars.first_name, stars.last_name FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id WHERE movies.rating = 'G';</strong>
+    SELECT DISTINCT stars.first_name, stars.last_name FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id WHERE movies.rating = 'G';
 
     ```
 
@@ -98,7 +98,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT stars.first_name, stars.last_name, COUNT(roles.movie_id) AS movie_count FROM stars JOIN roles ON stars.id = roles.star_id GROUP BY stars.id ORDER BY movie_count DESC;</strong>
+    SELECT stars.first_name, stars.last_name, COUNT(roles.movie_id) AS movie_count FROM stars JOIN roles ON stars.id = roles.star_id GROUP BY stars.id ORDER BY movie_count DESC;
 
     ```
 
@@ -109,7 +109,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT movies.title, COUNT(roles.star_id) AS star_count FROM movies JOIN roles ON movies.id = roles.movie_id GROUP BY movies.id ORDER BY star_count DESC;</strong>
+    SELECT movies.title, COUNT(roles.star_id) AS star_count FROM movies JOIN roles ON movies.id = roles.movie_id GROUP BY movies.id ORDER BY star_count DESC;
 
     ```
 
@@ -118,7 +118,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
      ```sql
 
-    <strong>SELECT stars.first_name, stars.last_name, AVG(movies.runtime) AS average_runtime FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id GROUP BY stars.id ORDER BY average_runtime DESC LIMIT 5;</strong>
+    SELECT stars.first_name, stars.last_name, AVG(movies.runtime) AS average_runtime FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id GROUP BY stars.id ORDER BY average_runtime DESC LIMIT 5;
 
     ```
 
@@ -127,7 +127,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT stars.first_name, stars.last_name, AVG(movies.runtime) AS average_runtime FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id GROUP BY stars.id HAVING COUNT(roles.movie_id) > 1 ORDER BY average_runtime DESC LIMIT 5;</strong>
+    SELECT stars.first_name, stars.last_name, AVG(movies.runtime) AS average_runtime FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id GROUP BY stars.id HAVING COUNT(roles.movie_id) > 1 ORDER BY average_runtime DESC LIMIT 5;
 
     ```
 
@@ -136,7 +136,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT movies.title FROM movies LEFT JOIN roles ON movies.id = roles.movie_id WHERE roles.star_id IS NULL;</strong>
+    SELECT movies.title FROM movies LEFT JOIN roles ON movies.id = roles.movie_id WHERE roles.star_id IS NULL;
 
     ```
 
@@ -144,21 +144,21 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
     ```sql
 
-    <strong>SELECT stars.first_name, stars.last_name FROM stars LEFT JOIN roles ON stars.id = roles.star_id WHERE roles.movie_id IS NULL;</strong>
+    SELECT stars.first_name, stars.last_name FROM stars LEFT JOIN roles ON stars.id = roles.star_id WHERE roles.movie_id IS NULL;
 
     ```
 
 16. The first names, last names, and titles corresponding to every
     role in the database, along with every movie title that doesn't have a star, and the first and last names of every star not in a movie.
     ```sql
-    
-    <strong>-- Roles
+
+    -- Roles
     SELECT stars.first_name, stars.last_name, movies.title FROM stars JOIN roles ON stars.id = roles.star_id JOIN movies ON roles.movie_id = movies.id;
 
     -- Movies without stars
     SELECT movies.title FROM movies LEFT JOIN roles ON movies.id = roles.movie_id WHERE roles.star_id IS NULL;
 
     -- Stars without movies
-    SELECT stars.first_name, stars.last_name FROM stars LEFT JOIN roles ON stars.id = roles.star_id WHERE roles.movie_id IS NULL;</strong>
-    
+    SELECT stars.first_name, stars.last_name FROM stars LEFT JOIN roles ON stars.id = roles.star_id WHERE roles.movie_id IS NULL;
+
     ```

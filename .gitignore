@@ -4,3 +4,4 @@ venv
 movies.sql
 requirements.txt
 readme.md
+.python-version
